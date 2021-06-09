@@ -92,3 +92,47 @@ Process Resources
   + NEW - being created in fork
   + ZOMBIE - exited, holds exit status for parent
 
+
+## Scheduling
+
+### Scheduling Classes
+
+
+Threads are divided into five scheduling classes
+
+
+Priority | Class | Thread type 
+---------| ------| -----------
+0-47     | ITHD  | Bottom-haf kernel(interrupt)
+48-79    | REALTIME | Real-time user
+80-119   | KERN  | Top-half Kernel
+120-223  | TIMESHARE | Time-sharing user
+224-255  | IDLE   | idle user
+
+
+Higher values of priority imply lower levels of service
+ITHD and KERN classes are managed by he kernel
+REALTIME and IDLE classes are managed by user processes
+TIMESHARE class management shared by kernel and user processes
+
+
+### Scheduling Choices
+
++ Real time
+  + processes set specific priorities
+  + kernel does not change priorities
++ Interactie scheduler(ULE)
+  + processor affinity
+  + kernel sets priority based on interactivity score
++ Share scheduler (4BSD)
+  + multi-level feedback queues
+  + kernel changes priority based on run behavior
++ Idle scheduler
+  + administrator set specific priorities
+  + kernel does not change priorities
+
+
+
+## Asynchronous Events
+
+

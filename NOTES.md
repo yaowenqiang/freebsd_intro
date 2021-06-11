@@ -135,4 +135,73 @@ TIMESHARE class management shared by kernel and user processes
 
 ## Asynchronous Events
 
++ Hardware Exceptions
+  + traps
+  + memory faults
+  + arithmetic exceptions
++ External Events
+  + Interrupt
+  + Quit
+  + Stop
++ I/O Events
+  + I/O Completion
+  + I/O availability
+  + Out=of-band data
++ Timer
+  + Real time
+  + Process virtual time
 
+## process groups and sessions
+
++ A session  structure describes:
+  + Session leader/controlling process
+  + controlling terminal vnode and tty
+  + login name
+  + reference count
+  + session identifier
++ Process group structure, pgrp:
+  + process group ID # ps j show pgid
+  + list of procs in group
+  + reference to session
+  + other process group state
++ Processes and process groups can be located by ID via hash tables(using linked hash chains, not indices!)
+
+
+## Operate jails
+
+Create a group of processes with their own root-administered environment
+
+Jail Rules
+
++ Permitted
+  + running or signalling process withing jail
+  + changes to files within jail
+  + binding ports to jail's IP addresses
+  + accessing raw, divert, or routing sockets on jail's virtual network interfaces
++ Not permitted
+  + getting information on processes outside of the jail
+  + changing kernel variables
+  + mounting or unmounting filesystems
+  + modifying physical network interfaces or configurations 
+  + rerbooting
+
+# Virtual memory
+
+## virtual memory layout
+> 32 bit
++ kernel
+  + malloc()'ed memory
+  + kernel thread stacks'
+  + data
+  + text
++ user process
+  + argv,envp
+  + user stack
+  + share memory?
+  + heap
+  + data
+  + text
+
+## Use physical memory and swap space
+
+> set virtual memory limits, different with linux ,.inux has no limits ,
